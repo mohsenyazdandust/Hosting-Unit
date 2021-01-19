@@ -1,5 +1,5 @@
-from flask import Flask 
-from flask import render_template
+from flask import Flask, render_template, jsonify, request
+from modules import users
 
 app = Flask(__name__)
 
@@ -18,4 +18,12 @@ def done():
 @app.route("/upload")
 def upload():
 	return render_template("upload.html")
+
+@app.route("/login", methods=['POST'])
+def login():
+	user =  request.form['username']
+	password = request.form['password']
+	is_user = users.check_user(user, password)
+	return jsonify(validate=is_user)
+
 app.run(debug=True)
