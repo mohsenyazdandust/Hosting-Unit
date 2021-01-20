@@ -30,26 +30,25 @@
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Behroj101.mkv</td>
+                        <td class="dl_link"><a href="{{ url_for('get_link', filename='dl_test.txt') }}" download>Behroj101.txt</a></td>
                         <td>Video</td>
                         <td>2020-01-10</td>
                         <td>48.2 MB</td>
                         <td>
-                            <!-- <button class="btn btn-outline-danger btn-sm">Remove</button> -->
                         <div class="btn-group" role="group">
                             <button id="actionDrop" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Action
                             </button>
                             <div class="dropdown-menu" aria-labelledby="actionDrop">
                               <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#confirmDelete">Delete</a>
-                              <a class="dropdown-item text-info" href="#">Copy Link</a>
+                              <a class="dropdown-item text-info copy-link" href="{{ url_for('get_link', filename='dl_test.txt') }}">Copy Link</a>
                             </div>
                         </div>
                         </td>
                     </tr>             
                 </tbody>
             </table>
-            <div class="alert alert-primary fixed-bottom col-1 m-4 text-center" role="alert">
+            <div class="alert alert-primary fixed-bottom m-4 text-center copied" role="alert" style="display: none;">
                 Copied!
             </div>
         </div>
@@ -68,7 +67,15 @@
           </div>
         </div>
     </body>
+    <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- JQ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="static/assets/custom/copy.js" type="text/javascript"></script>
+
 </html>
