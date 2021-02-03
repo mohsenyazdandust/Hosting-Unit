@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, send_from_directory, redirect
+from flask import Flask, render_template, jsonify, request, send_from_directory, redirect, make_response
 import os
 import clipboard as cb
 from modules import users, box_files
@@ -30,6 +30,9 @@ def login():
 	user =  request.form['username']
 	password = request.form['password']
 	is_user = users.check_user(user, password)
+	if is_user:
+		resp = make_response(render_template('files.html'))
+		resp.set_cookie('userID', user)
 	return jsonify(validate=is_user)
 
 @app.route('/box/<path:filename>', methods=['GET', 'POST'])
