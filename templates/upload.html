@@ -17,13 +17,13 @@
             </div>
             <div class="row">
                 <div class="col-8">
-                    <form>
+                    <form method="POST" action="upload_file" enctype="multipart/form-data">
                         <div class="input-group m-1">
-                            <input type="file" class="form-control" aria-label="Upload">
+                            <input type="file" class="form-control" aria-label="Upload" name="file">
                         </div>
                         <div class="input-group m-1">
                             <span class="input-group-text">Rename</span>
-                            <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                            <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="rename">
                         </div>
                         <button class="btn btn-outline-success my-2 mx-1" type="submit">Upload</button>
                         <a class="btn btn-outline-danger my-2" href="/files">Cancel</a>

@@ -12,13 +12,13 @@ def get_files():
 		size_m = "B"
 		if file_size >= 1024 * 1024:
 			file_size /= 1024 * 1024
-			size_m = "GB"
+			size_m = "MB"
 		elif file_size >= 1024:
 			file_size /= 1024
-			size_m = "MB"
+			size_m = "KB"
 		file_dict = {'Name': file,
 			"Date": time.strftime('%Y/%d/%m',time.gmtime(os.path.getmtime(file_dir))),
-			"Size": file_size,
+			"Size": round(file_size),
 			"Size_m": size_m}
 		files.append(file_dict)
 

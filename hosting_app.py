@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, send_from_directory
+from flask import Flask, render_template, jsonify, request, send_from_directory, redirect
 import os
 import clipboard as cb
 from modules import users, box_files
@@ -42,8 +42,26 @@ def copy_link():
 	link =  request.args.get('link')
 	cb.copy(link)
 	return jsonify(done=True)
+
 @app.route("/logout")
 def logout():
 	return render_template("index.html")
+
+@app.route('/upload_file', methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return redirect("/")
+
+        file = request.files['file']
+        if file.filename == '':
+            return redirect("/")
+        if file:
+            if request.form['rename'] != "":
+            	filename = request.form['rename'] + "." +  file.filename.split('.')[-1]
+            else:
+            	filename = file.filename
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect('/done')
 
 app.run(debug=True)
