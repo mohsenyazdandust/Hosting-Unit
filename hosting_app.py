@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request, send_from_directory
 import os
 import clipboard as cb
-from modules import users
+from modules import users, box_files
 
 
 app = Flask(__name__)
@@ -14,7 +14,8 @@ def index():
 
 @app.route("/files")
 def files():
-	return render_template("files.html")
+	all_files = box_files.get_files()
+	return render_template("files.html", files=all_files)
 
 @app.route("/done")
 def done():
@@ -41,5 +42,8 @@ def copy_link():
 	link =  request.args.get('link')
 	cb.copy(link)
 	return jsonify(done=True)
+@app.route("/logout")
+def logout():
+	return render_template("index.html")
 
 app.run(debug=True)
