@@ -23,7 +23,6 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Type</th>
                         <th scope="col">Date</th>
                         <th scope="col">Size</th>
                         <th scope="col"></th>
@@ -33,10 +32,9 @@
                     {% for file in files %}
                     <tr>
                         <th scope="row">1</th>
-                        <td class="dl_link"><a href="{{ url_for('get_link', filename=file) }}" download>{{ file }}</a></td>
-                        <td>Video</td>
-                        <td>2020-01-10</td>
-                        <td>48.2 MB</td>
+                        <td class="dl_link"><a href="{{ url_for('get_link', filename=file['Name']) }}" download>{{ file['Name'] }}</a></td>
+                        <td>{{ file['Date'] }}</td>
+                        <td>{{ file['Size'] }} {{ file['Size_m'] }}</td>
                         <td>
                         <div class="btn-group" role="group">
                             <button id="actionDrop" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
