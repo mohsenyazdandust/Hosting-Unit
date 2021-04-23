@@ -5,7 +5,7 @@ from modules import users, box_files
 
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = "box/"
+app.config['UPLOAD_FOLDER'] = "static/box/"
 
 
 @app.route("/")
@@ -33,7 +33,7 @@ def login():
 	if is_user:
 		resp = make_response(render_template('files.html'))
 		resp.set_cookie('userID', user)
-	return jsonify(validate=is_user)
+	return jsonify({"validate": True})
 
 @app.route('/box/<path:filename>', methods=['GET', 'POST'])
 def get_link(filename):

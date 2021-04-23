@@ -4,7 +4,7 @@ def get_files():
 	import pathlib
 
 	files = []
-	directory = os.path.join(pathlib.Path().absolute(), "box")
+	directory = os.path.join(pathlib.Path().absolute(), "static/box")
 
 	for file in os.listdir(directory):
 		file_dir = os.path.join(directory, file)
